@@ -82,4 +82,7 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     //Logger
     implementation 'com.orhanobut:logger:2.1.1'
+    //运行时权限
+    implementation 'pub.devrel:easypermissions:1.2.0'
+    implementation project(':multiplestatusview')
 }
