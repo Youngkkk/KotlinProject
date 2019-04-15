@@ -5,13 +5,13 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import com.young.kotlinproject.utils.DisplayManager
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
 import com.young.kotlinproject.BuildConfig
-import com.young.kotlinproject.utils.DisplayManager
 import kotlin.properties.Delegates
 
 /**

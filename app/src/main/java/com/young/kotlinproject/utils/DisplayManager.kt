@@ -4,10 +4,11 @@ import android.content.Context
 import android.util.DisplayMetrics
 
 /**
- * 显示的管理器
+ * Created by xuhao on 2017/11/27.
+ * desc:
  */
-object DisplayManager {
 
+object DisplayManager {
     init {
 
     }
@@ -20,9 +21,6 @@ object DisplayManager {
 
     private var screenDpi: Int? = null
 
-    /**
-     * 初始化屏幕参数
-     */
     fun init(context: Context) {
         displayMetrics = context.resources.displayMetrics
         screenWidth = displayMetrics?.widthPixels
@@ -30,9 +28,11 @@ object DisplayManager {
         screenDpi = displayMetrics?.densityDpi
     }
 
+
     //UI图的大小
     private const val STANDARD_WIDTH = 1080
     private const val STANDARD_HEIGHT = 1920
+
 
     fun getScreenWidth(): Int? {
         return screenWidth
@@ -42,8 +42,33 @@ object DisplayManager {
         return screenHeight
     }
 
+
     /**
-     * 输入UI图的尺寸，输出实际的px，第二个参数为父布局
+     * 传入UI图中问题的高度，单位像素
+     * @param size
+     * @return
+     */
+    fun getPaintSize(size: Int): Int? {
+        return getRealHeight(size)
+    }
+
+    /**
+     * 输入UI图的尺寸，输出实际的px
+     *
+     * @param px ui图中的大小
+     * @return
+     */
+    fun getRealWidth(px: Int): Int? {
+        //ui图的宽度
+        return getRealWidth(px, STANDARD_WIDTH.toFloat())
+    }
+
+    /**
+     * 输入UI图的尺寸，输出实际的px,第二个参数是父布局
+     *
+     * @param px          ui图中的大小
+     * @param parentWidth 父view在ui图中的高度
+     * @return
      */
     fun getRealWidth(px: Int, parentWidth: Float): Int? {
         return (px / parentWidth * getScreenWidth()!!).toInt()
@@ -51,6 +76,9 @@ object DisplayManager {
 
     /**
      * 输入UI图的尺寸，输出实际的px
+     *
+     * @param px ui图中的大小
+     * @return
      */
     fun getRealHeight(px: Int): Int? {
         //ui图的宽度
@@ -58,7 +86,11 @@ object DisplayManager {
     }
 
     /**
-     * 输入UI图的尺寸，输出实际的px，第二个参数为父布局
+     * 输入UI图的尺寸，输出实际的px,第二个参数是父布局
+     *
+     * @param px           ui图中的大小
+     * @param parentHeight 父view在ui图中的高度
+     * @return
      */
     fun getRealHeight(px: Int, parentHeight: Float): Int? {
         return (px / parentHeight * getScreenHeight()!!).toInt()
@@ -66,6 +98,8 @@ object DisplayManager {
 
     /**
      * dip转px
+     * @param dipValue
+     * @return int
      */
     fun dip2px(dipValue: Float): Int? {
         val scale = displayMetrics?.density
